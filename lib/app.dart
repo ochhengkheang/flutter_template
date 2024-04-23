@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
         darkTheme: MyTheme.materialDarkTheme,
         theme: MyTheme.materialLightTheme,
         debugShowCheckedModeBanner: true,
-        home: const Scaffold(),
+        home: Scaffold(
+          body: Container(),
+        ),
       ),
     );
   }

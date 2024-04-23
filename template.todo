@@ -1,4 +1,7 @@
 Steps:
+    - check pacakge fluttergen
+    - check package flutternativesplash
+    - check env package
     - check built-in device folder (webs, windows, macos, linux). Delete them if no need to use.
     - check pubspec.yaml
     - delete all example files (example.dart, example.png...)
