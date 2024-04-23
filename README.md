@@ -5,7 +5,11 @@ A resuable flutter template to save time.
 ## Usage
 
 Clone the app, rename the folder.
+
+Follow the first step of env package.
+
 In folder path. Run command futter clean && flutter build bundle.
+
 Then run the app.
 
 ## Steps
