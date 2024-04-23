@@ -1,0 +1,13 @@
+Steps:
+    - check built-in device folder (webs, windows, macos, linux). Delete them if no need to use.
+    - check pubspec.yaml
+    - delete all example files (example.dart, example.png...)
+        - >> (ctrl+shift+p) -> type-> example (make sure there are no ">" at the front)
+        - >> (example) not (>example)
+    - check utils
+    - check app
+    - check assets
+    - check main
+    - configure flutter gen for assets
+    - configure route
+    - configure firebase. Delete anything related if no need to use.

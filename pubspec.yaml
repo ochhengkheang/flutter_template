@@ -1,0 +1,154 @@
+name: flutter_template
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.2 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # delete all comments(#) after setting up your own packages
+  # required --- Other files are using the packages
+  # optional --- No effect after removed
+
+  # icons #
+  # required
+  cupertino_icons: ^1.0.6
+  # optional
+  iconsax: ^0.0.8
+
+  # generator #
+  # required
+  flutter_gen: ^5.4.0
+
+  # state managements #
+  # optional
+  provider: ^6.1.1
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+
+  # utils #
+  # required
+  go_router: ^13.2.4
+  flutter_spinkit: ^5.2.0
+  http: ^1.1.2
+  intl: ^0.19.0
+  image_picker: ^1.0.7
+  url_launcher: ^6.2.6
+
+  # storage #
+  # required
+  get_storage: ^2.1.1
+  shared_preferences: ^2.2.2
+
+  # widgets #
+  # required
+  fluttertoast: ^8.2.5
+  # optional
+  smooth_page_indicator: ^1.1.0
+  skeletonizer: ^1.1.1
+  flutter_platform_widgets: ^6.0.2
+  flutter_native_splash: ^2.3.8
+  google_nav_bar: ^5.0.6
+  carousel_slider: ^4.2.1
+  flutter_slidable: ^3.0.1
+  otp_text_field: ^1.1.3
+  country_code_picker: ^3.0.0
+
+  # providers #
+  # optional
+  google_sign_in: ^6.2.1
+  flutter_facebook_auth: ^6.2.0
+
+  # animations #
+  # optional
+  animated_text_kit: ^4.2.2
+
+  # firebase #
+  # required
+  firebase_core: ^2.24.2
+  cloud_firestore: ^4.13.6
+  firebase_auth: ^4.18.0
+  firebase_storage: ^11.7.1
+  firebase_app_check: ^0.2.2+1
+
+  # json #
+  # optional
+  json_serializable: ^6.7.1
+  json_annotation: ^4.8.1
+
+  # security #
+  # required
+  flutter_dotenv: ^5.1.0
+  # optional
+  permission_handler: ^11.3.1
+
+  # connection #
+  # required
+  internet_connection_checker: ^1.0.0+1
+
+  # resize #
+  # optional
+  flutter_screenutil: ^5.9.0
+  resize: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^3.0.1
+
+  # generator #
+  # required
+  build_runner: ^2.4.7
+  flutter_gen_runner:
+  riverpod_generator: ^2.4.0
+  custom_lint: ^0.6.4
+  riverpod_lint: ^2.3.10
+
+
+# The following section is specific to Flutter packages.
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+    - assets/images/onboarding/
+    - assets/images/logos/
+    - assets/icons/
+    - assets/fonts/
+    - assets/gifs/
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
