@@ -8,7 +8,7 @@ Clone the app, rename the folder.
 
 Follow the first step of env package.
 
-In folder path. Run command futter clean && flutter build bundle.
+In folder path. Run command flutter clean && flutter build bundle
 
 Then run the app.
 
