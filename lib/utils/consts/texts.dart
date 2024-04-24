@@ -1,8 +1,8 @@
 /// --- Template ---
 // -- Don't forget to change class name
 // This Class contains all the App Text in string formats.
-class MyWikiTextString {
-  MyWikiTextString._();
+class MyTextString {
+  MyTextString._();
 
   /// --- GlOBAL --- Examples
   static const String appName = "RorkWiki";
