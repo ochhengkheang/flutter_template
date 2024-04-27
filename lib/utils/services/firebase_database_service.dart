@@ -1,43 +1,69 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 /// --- Template ---
 class FirestoreDatabaseService {
   final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
-  Stream<DocumentSnapshot<Map<String, dynamic>>> buildStream(
-    String collectionName,
-    String userId,
-  ) {
-    return firebaseFirestore.collection(collectionName).doc(userId).snapshots();
+  /// --- Collection
+  Stream<QuerySnapshot<Map<String, dynamic>>> buildStreamCollection({
+    required String collectionName,
+  }) {
+    return firebaseFirestore.collection(collectionName).snapshots();
   }
 
-  Future<void> create(
-      User user, String collectionName, Map<String, dynamic> data,
-      {bool merge = true}) async {
+  Future<QuerySnapshot> getAllDocumentsFromOneCollection({
+    required String collectionName,
+  }) async {
+    return await firebaseFirestore.collection(collectionName).get();
+  }
+
+  /// --- Document
+  Stream<DocumentSnapshot<Map<String, dynamic>>> buildStreamDocument({
+    required String collectionName,
+    required String docId,
+  }) {
+    return firebaseFirestore.collection(collectionName).doc(docId).snapshots();
+  }
+
+  Future<void> createDocument({
+    required String collectionName,
+    required String docId,
+    required Map<String, dynamic> data,
+    bool merge = true,
+  }) async {
     await firebaseFirestore
         .collection(collectionName)
-        .doc(user.uid)
+        .doc(docId)
         .set(data, SetOptions(merge: merge));
   }
 
-  Future<void> update(
-      User user, String collectionName, Map<String, dynamic> data) async {
+  Future<void> updateDocument({
+    required String collectionName,
+    required String docId,
+    required Map<String, dynamic> data,
+  }) async {
     DocumentReference userDocRef =
-        firebaseFirestore.collection(collectionName).doc(user.uid);
+        firebaseFirestore.collection(collectionName).doc(docId);
     await userDocRef.update(data);
   }
 
-  Future<void> updateField(
-      User user, String collectionName, String key, String data) async {
+  Future<void> updateDocumentField({
+    required String collectionName,
+    required String docId,
+    required String key,
+    required String data,
+  }) async {
     DocumentReference userDocRef =
-        firebaseFirestore.collection(collectionName).doc(user.uid);
+        firebaseFirestore.collection(collectionName).doc(docId);
     await userDocRef.update({
       key: data,
     });
   }
 
-  Future<void> delete(User user, String collectionName) async {
-    await firebaseFirestore.collection(collectionName).doc(user.uid).delete();
+  Future<void> deleteDocument({
+    required String collectionName,
+    required String docId,
+  }) async {
+    await firebaseFirestore.collection(collectionName).doc(docId).delete();
   }
 }

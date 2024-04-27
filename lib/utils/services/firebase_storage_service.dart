@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_template/utils/consts/durations.dart';
 
@@ -7,23 +6,46 @@ import 'package:flutter_template/utils/consts/durations.dart';
 class FirebaseStorageService {
   final _firebaseStorage = FirebaseStorage.instance;
 
-  Future<String> uploadImageToFirebaseStorageWithUser(
-      User user, String imagePath, String storagePath) async {
+  Future<String> uploadImageToFirebaseStorage({
+    required String storagePath,
+    required String path,
+    required String imagePath,
+  }) async {
     final Reference storageRef =
-        _firebaseStorage.ref().child(storagePath).child(user.uid);
-    final uploadTask = storageRef
+        _firebaseStorage.ref().child(storagePath).child(path);
+    final uploadTask = await storageRef
         .putFile(File(imagePath))
         .timeout(const Duration(seconds: MyDurations.timeOut));
-    final TaskSnapshot downloadUrl = await uploadTask;
+    final TaskSnapshot downloadUrl = uploadTask;
     return downloadUrl.ref
         .getDownloadURL()
         .timeout(const Duration(seconds: MyDurations.timeOut));
   }
 
-  Future<void> deleteImageFromFirebaseStorageWithUser(
-      User user, String storagePath) async {
+  Future<List<String>> getImagesFromFirebaseStorage({
+    required String storagePath,
+    required String path,
+  }) async {
     final Reference storageRef =
-        _firebaseStorage.ref().child(storagePath).child(user.uid);
+        _firebaseStorage.ref().child(storagePath).child(path);
+    final ListResult results = await storageRef
+        .listAll()
+        .timeout(const Duration(seconds: MyDurations.timeOut));
+    List<String> imagePaths = [];
+    for (Reference reference in results.items) {
+      imagePaths.add(await reference
+          .getDownloadURL()
+          .timeout(const Duration(seconds: MyDurations.timeOut)));
+    }
+    return imagePaths;
+  }
+
+  Future<void> deleteImageFromFirebaseStorage({
+    required String storagePath,
+    required String path,
+  }) async {
+    final Reference storageRef =
+        _firebaseStorage.ref().child(storagePath).child(path);
     await storageRef
         .delete()
         .timeout(const Duration(seconds: MyDurations.timeOut));
