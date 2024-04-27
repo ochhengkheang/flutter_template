@@ -20,28 +20,36 @@ class FirebaseAuthenticationService {
     return _firebaseAuth.userChanges();
   }
 
-  Future<void> logInWithEmailAndPassword(String email, String password) async {
+  Future<void> logInWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
     await _firebaseAuth
         .signInWithEmailAndPassword(email: email, password: password)
         .timeout(const Duration(seconds: MyDurations.timeOut));
   }
 
-  Future<UserCredential> signInWithCrendential(
-      AuthCredential credential) async {
+  Future<UserCredential> signInWithCrendential({
+    required AuthCredential credential,
+  }) async {
     return await _firebaseAuth
         .signInWithCredential(credential)
         .timeout(const Duration(seconds: MyDurations.timeOut));
   }
 
-  Future<UserCredential> registerWithEmailAndPassword(
-      String email, String password) async {
+  Future<UserCredential> registerWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
     return await _firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: password)
         .timeout(const Duration(seconds: MyDurations.timeOut));
   }
 
   /// --- Reset Password --- Email
-  Future<void> sendPasswordResetEmail(String email) async {
+  Future<void> sendPasswordResetEmail({
+    required String email,
+  }) async {
     await _firebaseAuth
         .sendPasswordResetEmail(email: email)
         .timeout(const Duration(seconds: MyDurations.timeOut));
@@ -53,7 +61,9 @@ class FirebaseAuthenticationService {
         .timeout(const Duration(seconds: MyDurations.timeOut));
   }
 
-  Future<void> deleteAccount(User user) async {
+  Future<void> deleteAccount({
+    required User user,
+  }) async {
     await user.delete().timeout(const Duration(seconds: MyDurations.timeOut));
   }
 
@@ -81,26 +91,36 @@ class FirebaseAuthenticationService {
         .timeout(const Duration(seconds: MyDurations.timeOut));
   }
 
-  PhoneAuthCredential submitPhoneNumberOpt(
-      String smsCode, String verificationId) {
+  PhoneAuthCredential submitPhoneNumberOpt({
+    required String smsCode,
+    required String verificationId,
+  }) {
     return PhoneAuthProvider.credential(
         verificationId: verificationId, smsCode: smsCode);
   }
 
-  Future<void> updateUsername(User user, String username) async {
+  Future<void> updateUsername({
+    required User user,
+    required String username,
+  }) async {
     await _firebaseAuth.currentUser!
         .updateDisplayName(username)
         .timeout(const Duration(seconds: MyDurations.timeOut));
   }
 
-  Future<void> updatePhoneNumber(
-      User user, PhoneAuthCredential phoneAuthCredential) async {
+  Future<void> updatePhoneNumber({
+    required User user,
+    required PhoneAuthCredential phoneAuthCredential,
+  }) async {
     await user
         .updatePhoneNumber(phoneAuthCredential)
         .timeout(const Duration(seconds: MyDurations.timeOut));
   }
 
-  Future<void> updatePhoto(User user, String? photoUrl) async {
+  Future<void> updatePhoto({
+    required User user,
+    String? photoUrl,
+  }) async {
     await user
         .updatePhotoURL(photoUrl)
         .timeout(const Duration(seconds: MyDurations.timeOut));
