@@ -7,15 +7,19 @@ import 'package:google_sign_in/google_sign_in.dart';
 class FirebaseAuthenticationService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  // Recommned: Combination of AuthStateChanges and UserChanges
+  /// Recommned: Combination of AuthStateChanges and UserChanges
   Stream<User?> buildUserChagesStream() {
     return _firebaseAuth.userChanges();
   }
 
+  /// Recommned: Use buildUserChagesStream()
+  /// Only listen to authState
   Stream<User?> buildauthStateChangesStream() {
     return _firebaseAuth.authStateChanges();
   }
 
+  /// Recommned: Use buildUserChagesStream()
+  /// Only listen to userChanges
   Stream<User?> builduserChangesStream() {
     return _firebaseAuth.userChanges();
   }
