@@ -20,19 +20,19 @@ class FirestoreDatabaseService {
     return docRef.snapshots();
   }
 
-  Future<QuerySnapshot> getAllDocumentsFromOneCollection({
+  Future<QuerySnapshot> getDataFromCollection({
     required String collectionName,
   }) async {
     return await firebaseFirestore.collection(collectionName).get();
   }
 
-  /// Specify the docRef
+  /// Specify the colllectionRef
   /// For example:
-  /// docRef: firebaseFirestore.collection(path).doc(docId).collection(path).doc(docId);
-  Future<DocumentSnapshot> getAllDocumentsFromOneCollectionCustomRef({
-    required DocumentReference docRef,
+  /// colllectionRef: firebaseFirestore.collection(path).doc(docId).collection(path);
+  Future<QuerySnapshot> getDataFromCollectionCustomRef({
+    required CollectionReference colllectionRef,
   }) async {
-    return docRef.get();
+    return colllectionRef.get();
   }
 
   /// --- Document
@@ -43,11 +43,26 @@ class FirestoreDatabaseService {
     return firebaseFirestore.collection(collectionName).doc(docId).snapshots();
   }
 
+  Future<DocumentSnapshot> getDataFromDocument({
+    required String collectionName,
+  }) async {
+    return await firebaseFirestore.collection(collectionName).doc().get();
+  }
+
+  /// Specify the docRef
+  /// For example:
+  /// docRef: firebaseFirestore.collection(path).doc(docId).collection(path).doc(docId);
+  Future<DocumentSnapshot> getDataFromDocumentCustomRef({
+    required DocumentReference docRef,
+  }) async {
+    return docRef.get();
+  }
+
   Future<void> createDocument({
     required String collectionName,
     required String docId,
     required Map<String, dynamic> data,
-    bool merge = true,
+    bool merge = false,
   }) async {
     await firebaseFirestore
         .collection(collectionName)
@@ -61,7 +76,7 @@ class FirestoreDatabaseService {
   Future<void> createDocumentCustomRef({
     required DocumentReference docRef,
     required Map<String, dynamic> data,
-    bool merge = true,
+    bool merge = false,
   }) async {
     await docRef.set(data, SetOptions(merge: merge));
   }
@@ -84,11 +99,35 @@ class FirestoreDatabaseService {
     await docRef.update(data);
   }
 
+  Future<void> createDocumentField({
+    required String collectionName,
+    required String docId,
+    required String key,
+    required dynamic data,
+  }) async {
+    await firebaseFirestore.collection(collectionName).doc(docId).set({
+      key: data,
+    });
+  }
+
+  /// Specify the docRef
+  /// For example:
+  /// docRef: firebaseFirestore.collection(path).doc(docId).collection(path).doc(docId);
+  Future<void> createDocumentFieldCustomRef({
+    required DocumentReference docRef,
+    required String key,
+    required dynamic data,
+  }) async {
+    await docRef.set({
+      key: data,
+    });
+  }
+
   Future<void> updateDocumentField({
     required String collectionName,
     required String docId,
     required String key,
-    required String data,
+    required dynamic data,
   }) async {
     await firebaseFirestore.collection(collectionName).doc(docId).update({
       key: data,
@@ -101,7 +140,7 @@ class FirestoreDatabaseService {
   Future<void> updateDocumentFieldCustomRef({
     required DocumentReference docRef,
     required String key,
-    required String data,
+    required dynamic data,
   }) async {
     await docRef.update({
       key: data,

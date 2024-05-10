@@ -14,9 +14,9 @@ void main() async {
 
   // Todo: Add Device Utilities
   // Safe area color
-  await MyDeviceUtils.setStatusBarColor(MyColors.primary);
+  await MyDeviceUtils.setStatusBarColor(color: MyColors.primary);
   // Set device orientation
-  await MyDeviceUtils.setPreferredOrientation([
+  await MyDeviceUtils.setPreferredOrientation(orientations: [
     DeviceOrientation.portraitUp,
   ]);
 

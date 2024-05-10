@@ -7,46 +7,64 @@ import 'package:flutter/services.dart';
 // -- Don't forget to change class name
 class MyDeviceUtils {
   MyDeviceUtils._();
-  static void hideKeyboard(BuildContext context) {
+  static void hideKeyboard({
+    required BuildContext context,
+  }) {
     FocusScope.of(context).requestFocus(FocusNode());
   }
 
   //changes the color of the status bar
-  static Future<void> setStatusBarColor(Color color) async {
+  static Future<void> setStatusBarColor({
+    required Color color,
+  }) async {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: color));
   }
 
   // determine if the device's current orientation is landscape
-  static bool isLandscapeOrientation(BuildContext context) {
+  static bool isLandscapeOrientation({
+    required BuildContext context,
+  }) {
     final viewInsets = View.of(context).viewInsets;
     return viewInsets.bottom == 0;
   }
 
   // determine if the device's current orientation is landscape
-  static bool isProtraitOrientation(BuildContext context) {
+  static bool isProtraitOrientation({
+    required BuildContext context,
+  }) {
     final viewInsets = View.of(context).viewInsets;
     return viewInsets.bottom != 0;
   }
 
-  static void setFullScreen(bool enable) {
+  static void setFullScreen({
+    required bool enable,
+  }) {
     SystemChrome.setEnabledSystemUIMode(
         enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge);
   }
 
-  static double getScreenHeight(BuildContext context) {
+  static double getScreenHeight({
+    required BuildContext context,
+  }) {
     return MediaQuery.of(context).size.height;
   }
 
-  static double getScreenWidth(BuildContext context) {
+  static double getScreenWidth({
+    required BuildContext context,
+  }) {
     return MediaQuery.of(context).size.width;
   }
 
-  static double getPixelRatio(BuildContext context) {
+  static double getPixelRatio({
+    required BuildContext context,
+  }) {
     return MediaQuery.of(context).devicePixelRatio;
   }
 
-  static double getStatusBarHeight(BuildContext context) {
+  static double getStatusBarHeight({
+    required BuildContext context,
+  }) {
     return MediaQuery.of(context).padding.top;
   }
 
@@ -58,28 +76,37 @@ class MyDeviceUtils {
     return kToolbarHeight;
   }
 
-  static double getKeyboardHeight(BuildContext context) {
+  static double getKeyboardHeight({
+    required BuildContext context,
+  }) {
     final viewInsets = View.of(context).viewInsets;
     return viewInsets.bottom;
   }
 
-  static Future<bool> isKeyboardVisible(BuildContext context) async {
+  static Future<bool> isKeyboardVisible({
+    required BuildContext context,
+  }) async {
     final viewInsets = View.of(context).viewInsets;
     return viewInsets.bottom > 0;
   }
 
-  static Future<bool> isPhysicleDevice(BuildContext context) async {
+  static Future<bool> isPhysicleDevice({
+    required BuildContext context,
+  }) async {
     return defaultTargetPlatform == TargetPlatform.android ||
         defaultTargetPlatform == TargetPlatform.iOS;
   }
 
-  static void vibrate(Duration duration) {
+  static void vibrate({
+    required Duration duration,
+  }) {
     HapticFeedback.vibrate();
     Future.delayed(duration, () => HapticFeedback.vibrate());
   }
 
-  static Future<void> setPreferredOrientation(
-      List<DeviceOrientation> orientations) async {
+  static Future<void> setPreferredOrientation({
+    required List<DeviceOrientation> orientations,
+  }) async {
     await SystemChrome.setPreferredOrientations(orientations);
   }
 
@@ -90,15 +117,6 @@ class MyDeviceUtils {
   static void showStatusBar() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
-  }
-
-  static Future<bool> hasInternetConnection() async {
-    try {
-      final result = await InternetAddress.lookup('google.com');
-      return result.isNotEmpty && result.first.rawAddress.isNotEmpty;
-    } on SocketException catch (_) {
-      return false;
-    }
   }
 
   static bool isIOS() {

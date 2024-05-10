@@ -8,7 +8,9 @@ import 'package:flutter_template/utils/themes/themes.dart';
 
 class MyHelperFunctions {
   MyHelperFunctions._();
-  static Color? getColor(String value) {
+  static Color? getColor({
+    required String value,
+  }) {
     if (value == 'Red') {
       return Colors.red;
     } else if (value == 'Green') {
@@ -36,7 +38,10 @@ class MyHelperFunctions {
     return null;
   }
 
-  static void showSnackBar(String message, BuildContext context) {
+  static void showSnackBar({
+    required String message,
+    required BuildContext context,
+  }) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
@@ -44,8 +49,10 @@ class MyHelperFunctions {
     );
   }
 
-  static Future<void> openModelBottomSheet(
-      BuildContext context, Widget child) async {
+  static Future<void> openModelBottomSheet({
+    required BuildContext context,
+    required Widget child,
+  }) async {
     showModalBottomSheet(
       useSafeArea: true,
       context: context,
@@ -55,7 +62,11 @@ class MyHelperFunctions {
     );
   }
 
-  static void showAlert(String title, String message, BuildContext context) {
+  static void showAlert({
+    required String title,
+    required String message,
+    required BuildContext context,
+  }) {
     showDialog(
       context: context,
       builder: (context) {
@@ -72,7 +83,10 @@ class MyHelperFunctions {
     );
   }
 
-  static void navigateToScreen(Widget screen, BuildContext context) {
+  static void navigateToScreen({
+    required Widget screen,
+    required BuildContext context,
+  }) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => screen,
@@ -80,7 +94,10 @@ class MyHelperFunctions {
     );
   }
 
-  static void navigateToScreenRemoveUntil(Widget screen, BuildContext context) {
+  static void navigateToScreenRemoveUntil({
+    required Widget screen,
+    required BuildContext context,
+  }) {
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
           builder: (context) => screen,
@@ -88,7 +105,10 @@ class MyHelperFunctions {
         (route) => false);
   }
 
-  static String truncateText(String text, int maxLength) {
+  static String truncateText({
+    required String text,
+    required int maxLength,
+  }) {
     if (text.length <= maxLength) {
       return text;
     } else {
@@ -96,31 +116,34 @@ class MyHelperFunctions {
     }
   }
 
-  static bool isDarkMode(BuildContext context) {
+  static bool isDarkMode({
+    required BuildContext context,
+  }) {
     return Theme.of(context).brightness == Brightness.dark;
   }
 
-  static bool isLightMode(BuildContext context) {
+  static bool isLightMode({
+    required BuildContext context,
+  }) {
     return Theme.of(context).brightness == Brightness.light;
   }
 
-  static Size screenSize(BuildContext context) {
+  static Size screenSize({
+    required BuildContext context,
+  }) {
     return MediaQuery.of(context).size;
   }
 
-  static double screenWidth(BuildContext context) {
-    return MediaQuery.of(context).size.width;
-  }
-
-  static double screenHeigth(BuildContext context) {
-    return MediaQuery.of(context).size.height;
-  }
-
-  static List<T> removeDuplicates<T>(List<T> list) {
+  static List<T> removeDuplicates<T>({
+    required List<T> list,
+  }) {
     return list.toSet().toList();
   }
 
-  static List<Widget> wrapWidget(List<Widget> widgets, int rowSize) {
+  static List<Widget> wrapWidget({
+    required List<Widget> widgets,
+    required int rowSize,
+  }) {
     final wrappedList = <Widget>[];
     for (var i = 0; i < widgets.length; i += rowSize) {
       //This line creates a sublist of widgets for each row.
@@ -135,7 +158,9 @@ class MyHelperFunctions {
     return wrappedList;
   }
 
-  ThemeData getThemeData(TargetPlatform platform) {
+  ThemeData getThemeData({
+    required TargetPlatform platform,
+  }) {
     if (platform == TargetPlatform.iOS) {
       return MyTheme.materialLightTheme;
     } else {

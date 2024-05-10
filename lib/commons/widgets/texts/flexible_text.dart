@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/utils/consts/enums.dart';
 
-class RorkWikiTitleText extends StatelessWidget {
-  const RorkWikiTitleText({
+class MyTitleText extends StatelessWidget {
+  const MyTitleText({
     required this.title,
     this.maxLines = 1,
     this.textAlign = TextAlign.center,

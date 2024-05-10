@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class RorkWikiSectionHeadingText extends StatelessWidget {
-  const RorkWikiSectionHeadingText({
+class MySectionHeadingText extends StatelessWidget {
+  const MySectionHeadingText({
     super.key,
     this.buttonTitle = "View all",
     this.onPressed,

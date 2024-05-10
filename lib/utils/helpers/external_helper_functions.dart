@@ -12,7 +12,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 class MyExternalHelperFunction {
   MyExternalHelperFunction._();
-  static Future<String> pickImage(ImageSource imageSource) async {
+  static Future<String> pickImage({
+    required ImageSource imageSource,
+  }) async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(
       source: imageSource,
@@ -20,7 +22,9 @@ class MyExternalHelperFunction {
     return pickedFile == null ? "" : pickedFile.path;
   }
 
-  static Future<void> urlLauncherHttp(String url) async {
+  static Future<void> urlLauncherHttp({
+    required String url,
+  }) async {
     Uri urlLaunchuri = Uri.parse(url);
     if (!await launchUrl(urlLaunchuri)) {
       MyExternalHelperFunction.showToast(
@@ -28,7 +32,9 @@ class MyExternalHelperFunction {
     }
   }
 
-  static Future<void> urlLauncherSms(String number) async {
+  static Future<void> urlLauncherSms({
+    required String number,
+  }) async {
     final Uri smsLaunchUri = Uri(
       scheme: 'sms',
       path: number,
@@ -42,7 +48,9 @@ class MyExternalHelperFunction {
     }
   }
 
-  static Future<void> urlLauncherMail(String number) async {
+  static Future<void> urlLauncherMail({
+    required String number,
+  }) async {
     final Uri mailLaunchUri = Uri(
       scheme: 'mailto',
       path: number,
@@ -76,7 +84,9 @@ class MyExternalHelperFunction {
   }
 
   // Reminder: Check internet before any operations that require internet
-  Future<bool> checkInternet(BuildContext context) async {
+  Future<bool> hasInternetConnection({
+    required BuildContext context,
+  }) async {
     final bool hasConnection = await InternetConnectionChecker().hasConnection;
     if (!hasConnection) {
       MyExternalHelperFunction.showToast(message: "No connection.");

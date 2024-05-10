@@ -4,7 +4,9 @@ import 'package:flutter_template/utils/formatters/formatter.dart';
 // -- Don't forget to change class name
 class MyValidator {
   MyValidator._();
-  static String? validateEmail(String value) {
+  static String? validateEmail({
+    required String value,
+  }) {
     if (value.isEmpty || value == '') {
       return 'Email is required';
     }
@@ -24,14 +26,19 @@ class MyValidator {
     return null;
   }
 
-  static String? validateString(String fieldName, String value) {
+  static String? validateString({
+    required String fieldName,
+    required String value,
+  }) {
     if (value.trimLeft().trimRight().isEmpty || value == '') {
       return '$fieldName is required';
     }
     return null;
   }
 
-  static String? validatePassword(String value) {
+  static String? validatePassword({
+    required String value,
+  }) {
     if (value.isEmpty || value == '') {
       return 'Password is required';
     }
@@ -59,7 +66,10 @@ class MyValidator {
     return null;
   }
 
-  static String? validatePhoneNumber(String? value, String? countryCode) {
+  static String? validatePhoneNumber({
+    required String? value,
+    required String? countryCode,
+  }) {
     if (countryCode == null || countryCode.isEmpty) {
       return 'Please select a country';
     }
@@ -68,7 +78,8 @@ class MyValidator {
       return 'Phone number is required';
     }
 
-    value = MyFormatters.formatPhoneNumber(value, countryCode);
+    value = MyFormatters.formatPhoneNumber(
+        phoneNumber: value, countryCode: countryCode);
 
     // Regular expressions for phone number validation based on country code
     Map<String, RegExp> countryCodeRegexMap = {

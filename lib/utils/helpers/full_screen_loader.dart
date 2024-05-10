@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_template/utils/consts/colors.dart';
 import 'package:flutter_template/utils/helpers/external_helper_functions.dart';
+import 'package:go_router/go_router.dart';
 
 /// --- Template ---
 // -- Don't forget to change class name
@@ -33,10 +34,12 @@ class MyLoader {
   }
 
   Future<void> stopLoading() async {
-    Navigator.of(context).pop();
+    context.pop();
   }
 
-  Future<void> showError(Object? error) async {
+  Future<void> showError({
+    Object? error,
+  }) async {
     MyExternalHelperFunction.showToast(message: error.toString());
   }
 }
