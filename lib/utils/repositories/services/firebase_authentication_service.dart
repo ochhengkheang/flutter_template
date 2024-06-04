@@ -71,27 +71,26 @@ class FirebaseAuthenticationService {
     await user.delete().timeout(const Duration(seconds: MyDurations.timeOut));
   }
 
-  Future<void> verifyPhoneNumber({
-    required String phoneNumber,
-    int? forceResendingToken,
-    required void Function(PhoneAuthCredential phoneAuthCredential)
-        verificationCompleted,
-    required void Function(FirebaseAuthException firebaseAuthException)
-        verificationFailed,
-    required void Function(String string, int?) codeSend,
-  }) async {
+  Future<void> verifyPhoneNumber(
+      {required String phoneNumber,
+      int? forceResendingToken,
+      required void Function(PhoneAuthCredential phoneAuthCredential)
+          verificationCompleted,
+      required void Function(FirebaseAuthException firebaseAuthException)
+          verificationFailed,
+      required void Function(String verificationId, int? forceResendingToken)
+          codeSend,
+      required void Function(String verificationId)
+          codeAutoRetrievalTimeout}) async {
     await _firebaseAuth
         .verifyPhoneNumber(
-          forceResendingToken: forceResendingToken,
-          phoneNumber: phoneNumber,
-          timeout: const Duration(seconds: MyDurations.timeOut),
-          verificationCompleted: verificationCompleted,
-          verificationFailed: verificationFailed,
-          codeSent: codeSend,
-          codeAutoRetrievalTimeout: (verificationId) => {
-            Exception(),
-          },
-        )
+            forceResendingToken: forceResendingToken,
+            phoneNumber: phoneNumber,
+            timeout: const Duration(seconds: MyDurations.timeOut),
+            verificationCompleted: verificationCompleted,
+            verificationFailed: verificationFailed,
+            codeSent: codeSend,
+            codeAutoRetrievalTimeout: codeAutoRetrievalTimeout)
         .timeout(const Duration(seconds: MyDurations.timeOut));
   }
 

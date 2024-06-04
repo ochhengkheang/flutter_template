@@ -1,20 +1,35 @@
 Steps:
+    Packages:
     - check env package
         - >> create file name .env
         - Paste in .env
         # NASA Open API
         NASA_NEOWS_API_URL=https://api.nasa.gov/neo/rest/v1/neo/3542519?api_key=
         NASA_API_KEY=1234
-    - check pacakge fluttergen. Configure flutter gen for assets
-    - check package flutternativesplash
+    - check package fluttergen. >> Check sources to config
+    - check package flutter_launcher_icons. >> Check sources to config
+    - check package change_app_package_name >> Check sources to config
+    - check package flutternativesplash >> Check sources to config
+
+    Folders:
     - check built-in device folder (webs, windows, macos, linux). Delete them if no need to use.
-    - check pubspec.yaml
     - delete all example files (example.dart, example.png...)
         - >> (ctrl+shift+p) -> type-> example (make sure there are no ">" at the front)
         - >> (example) not (>example)
-    - check utils
-    - check app
     - check assets
-    - check main
+
+    Files:
+    - check utils
+    - check pubspec.yaml
+    - check main file
+    - check app file
     - configure route
     - configure firebase. Delete anything related if no need to use.
+
+Sources:
+    - flutter_dotenv: https://pub.dev/packages/flutter_dotenv
+    - fluttergen: https://pub.dev/packages/flutter_gen
+    - flutter_launcher_icons: https://pub.dev/packages/flutter_launcher_icons
+    - change_app_package_name: https://pub.dev/packages/change_app_package_name
+    - flutternativesplash: https://pub.dev/packages/flutter_native_splash
+    - go_router: https://pub.dev/packages/go_router

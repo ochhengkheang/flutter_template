@@ -11,13 +11,32 @@ class FirestoreDatabaseService {
     return firebaseFirestore.collection(collectionName).snapshots();
   }
 
-  /// Can be a collection or a document
-  /// Specify the docRef
+  /// Specify the colllectionRef
   /// For example:
-  /// docRef: firebaseFirestore.collection(path).doc(docId).collection(path).doc(docId);
-  Stream<DocumentSnapshot> buildStreamCustomRef(
-      {required DocumentReference docRef}) {
-    return docRef.snapshots();
+  /// colllectionRef: firebaseFirestore.collection(path).doc(docId).collection(path);
+  Stream<QuerySnapshot> buildStreamCollectionCustomRef(
+      {required CollectionReference colllectionRef}) {
+    return colllectionRef.snapshots();
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>>
+      buildStreamQueryDataFromCollection({
+    required String collectionName,
+    required String fieldName,
+    bool descending = false,
+    limit = 1,
+  }) {
+    return firebaseFirestore
+        .collection(collectionName)
+        .orderBy(fieldName, descending: descending)
+        .limit(limit)
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>>
+      buildStreamQueryDataFromCollectionCustomRef(
+          {required Query<Map<String, dynamic>> qurey}) {
+    return qurey.snapshots();
   }
 
   Future<QuerySnapshot> getDataFromCollection({
@@ -35,12 +54,38 @@ class FirestoreDatabaseService {
     return colllectionRef.get();
   }
 
+  Future<QuerySnapshot> queryDataFromCollection({
+    required String collectionName,
+    required String fieldName,
+    bool descending = false,
+    limit = 1,
+  }) async {
+    return await firebaseFirestore
+        .collection(collectionName)
+        .orderBy(fieldName, descending: descending)
+        .limit(limit)
+        .get();
+  }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> queryDataFromCollectionCustomRef(
+      {required Query<Map<String, dynamic>> qurey}) async {
+    return qurey.get();
+  }
+
   /// --- Document
   Stream<DocumentSnapshot<Map<String, dynamic>>> buildStreamDocument({
     required String collectionName,
     required String docId,
   }) {
     return firebaseFirestore.collection(collectionName).doc(docId).snapshots();
+  }
+
+  /// Specify the docRef
+  /// For example:
+  /// docRef: firebaseFirestore.collection(path).doc(docId).collection(path).doc(docId);
+  Stream<DocumentSnapshot> buildStreamDocumentCustomRef(
+      {required DocumentReference docRef}) {
+    return docRef.snapshots();
   }
 
   Future<DocumentSnapshot> getDataFromDocument({
