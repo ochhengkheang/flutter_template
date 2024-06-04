@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -43,9 +45,14 @@ void main() async {
   await dotenv.load(fileName: ".env");
 
   // Todo: Riverpod Provider Scope --- Remove it if riverpod isn't use
-  runApp(const ProviderScope(
-    child: MyApp(),
-  ));
+  runApp(
+    ProviderScope(
+      child: DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (context) => const MyApp(),
+      ),
+    ),
+  );
 
   // Todo: Remove Nativesplash --- Delete if no longer needed
   // whenever your initialization is completed, remove the splash screen:
