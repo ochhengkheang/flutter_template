@@ -2,8 +2,6 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template/app.dart';
 import 'package:flutter_template/utils/consts/colors.dart';
@@ -42,7 +40,7 @@ void main() async {
   // );
 
   // Todo: Initialize dotenv
-  await dotenv.load(fileName: ".env");
+  // await dotenv.load(fileName: ".env");
 
   // Todo: Riverpod Provider Scope --- Remove it if riverpod isn't use
   runApp(
