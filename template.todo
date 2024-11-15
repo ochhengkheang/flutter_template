@@ -1,11 +1,5 @@
 Steps:
     Packages:
-    - check env package
-        - >> create file name .env
-        - Paste in .env
-        # NASA Open API
-        NASA_NEOWS_API_URL=https://api.nasa.gov/neo/rest/v1/neo/3542519?api_key=
-        NASA_API_KEY=1234
     - check package fluttergen. >> Check sources to config
     - check package flutter_launcher_icons. >> Check sources to config
     - check package change_app_package_name >> Check sources to config
@@ -25,6 +19,9 @@ Steps:
     - check app file
     - configure route
     - configure firebase. Delete anything related if no need to use.
+
+    FLvors:
+    - To generate different icons for each flavor: flutter pub run flutter_launcher_icons:main -f flutter_launcher_icons*
 
 Sources:
     - flutter_dotenv: https://pub.dev/packages/flutter_dotenv

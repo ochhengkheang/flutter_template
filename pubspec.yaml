@@ -9,90 +9,65 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # delete all comments(#) after setting up your own packages
-  # required --- Other files are using the packages
-  # optional --- No effect after removed
-
   # icons #
-  # required
   cupertino_icons: ^1.0.8
-  # optional
   iconsax: ^0.0.8
 
   # generator #
-  # required
   flutter_gen: ^5.8.0
 
   # state managements #
-  # optional
   provider: ^6.1.2
   flutter_riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
 
   # utils #
-  # required
+  internet_connection_checker: ^1.0.0+1
   device_preview: ^1.2.0
   go_router: ^14.4.1
-  flutter_spinkit: ^5.2.1
   http: ^1.2.2
   intl: ^0.19.0
   image_picker: ^1.1.2
   url_launcher: ^6.3.1
   dio: ^5.7.0
   dart_jsonwebtoken: ^2.14.1
+  permission_handler: ^11.3.1
 
   # storage #
-  # required
   get_storage: ^2.1.1
   shared_preferences: ^2.3.3
 
   # widgets #
-  # required
   fluttertoast: ^8.2.8
-  # optional
+  flutter_spinkit: ^5.2.1
   smooth_page_indicator: ^1.2.0+3
   skeletonizer: ^1.4.2
   flutter_platform_widgets: ^7.0.1
-  flutter_native_splash: ^2.4.2
   google_nav_bar: ^5.0.7
   carousel_slider: ^5.0.0
   flutter_slidable: ^3.1.1
   otp_text_field: ^1.1.3
   country_code_picker: ^3.1.0
-
-  # providers #
-  # optional
-  google_sign_in: ^6.2.2
-
-  # animations #
-  # optional
   animated_text_kit: ^4.2.2
 
-  # firebase #
-  # required
+  # service #
   firebase_core: ^3.7.0
   cloud_firestore: ^5.4.5
   firebase_auth: ^5.3.2
   firebase_storage: ^12.3.5
   firebase_app_check: ^0.3.1+5
+  google_sign_in: ^6.2.2
 
   # json #
-  # optional
   json_serializable: ^6.8.0
   json_annotation: ^4.9.0
 
-  # security #
-  # required
+  # configuration #
   flutter_dotenv: ^5.2.1
-  # optional
-  permission_handler: ^11.3.1
+  flutter_native_splash: ^2.4.2
+  flutter_launcher_icons: ^0.14.1
 
-  # connection #
-  # required
-  internet_connection_checker: ^1.0.0+1
-
-  # resize #
-  # optional
+  # UI #
   responsive_framework: ^1.5.1
   resize: ^1.0.0
 
@@ -108,7 +83,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
   # generator #
-  # required
+
   build_runner: ^2.4.13
   flutter_gen_runner: ^5.8.0
   riverpod_generator: ^2.6.2
@@ -116,28 +91,7 @@ dev_dependencies:
   riverpod_lint: ^2.6.2
 
   # Config #
-  # required
-  flutter_launcher_icons: ^0.14.1
   change_app_package_name: ^1.4.0
-
-# The following section is specific to flutter launcher icons packages.
-flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/icon/icon.png"
-  min_sdk_android: 21 # android min sdk min:16, default 21
-  web:
-    generate: true
-    image_path: "path/to/image.png"
-    background_color: "#hexcode"
-    theme_color: "#hexcode"
-  windows:
-    generate: true
-    image_path: "path/to/image.png"
-    icon_size: 48 # min:48, max:256, default: 48
-  macos:
-    generate: true
-    image_path: "path/to/image.png"
 
 # The following section is specific to Flutter packages.
 flutter:

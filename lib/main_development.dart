@@ -47,7 +47,7 @@ void main() async {
     ProviderScope(
       child: DevicePreview(
         enabled: !kReleaseMode,
-        builder: (context) => const MyApp(),
+        builder: (context) => const MyApp(flavor: "Development"),
       ),
     ),
   );

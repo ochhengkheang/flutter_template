@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_template/utils/config.dart';
 
 class MyExampleScreen extends StatelessWidget {
   const MyExampleScreen({super.key});
@@ -6,7 +7,7 @@ class MyExampleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Text("Example App"),
+      body: Text(MyConfig.flavor),
     );
   }
 }
