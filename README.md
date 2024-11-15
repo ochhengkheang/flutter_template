@@ -1,20 +1,16 @@
 # Flutter Template: Featured-based
 
-A resuable flutter template to save time.
-
-## Usage
-
-Clone the app, rename the folder.
-
-Follow the first step of env package.
-
-In folder path. Run command flutter clean && flutter build bundle
-
-Then run the app.
+A resuable flutter template to save time and for reference.
 
 ## Steps
+There is a file name < template.todo > for guidance. Going though those steps will help.
 
-There is a file name < template.todo > for guidance. Make sure to follow the steps.
+## Usage
+Clone the app, rename the folder.
+
+Change configuration to fit your setting.
+
+Use change_app_package_name to config your project Application Id and App name.
 
 ## Sources
 
