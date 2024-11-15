@@ -22,6 +22,9 @@ Steps:
 
     FLvors:
     - To generate different icons for each flavor: flutter pub run flutter_launcher_icons:main -f flutter_launcher_icons*
+    - To generate different splash screens for each flavor: flutter pub run flutternativesplash:main -f flutternativesplash*
+    - To generate different app name for each flavor: flutter pub run change_app_package_name:main -f change_app_package_name*
+    - To generate diffrent .env for each flavor. Create .env file according to env value in launch.json
 
 Sources:
     - flutter_dotenv: https://pub.dev/packages/flutter_dotenv

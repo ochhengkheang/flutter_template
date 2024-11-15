@@ -6,8 +6,14 @@ class MyExampleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text(MyConfig.flavor),
+    return Scaffold(
+      body: Column(
+        children: [
+          Text(MyConfig.flavor
+          ),
+          Text(MyConfig().apiUrl),
+        ],
+      ),
     );
   }
 }

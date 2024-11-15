@@ -1,8 +1,12 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class MyConfig {
   static const String flavor =
       String.fromEnvironment('FLAVOR', defaultValue: 'production');
 
-  static String get apiUrl {
+  final String apiUrl = dotenv.env['API_URL'] ?? apiUrl_;
+
+  static String get apiUrl_ {
     switch (flavor) {
       case 'development':
         return 'https://dev-api.example.com';

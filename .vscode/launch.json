@@ -13,7 +13,10 @@
         "lib/main_production.dart",
         "--dart-define",
         "FLAVOR=production"
-      ]
+      ],
+      "env": {
+        "FLUTTER_ENV": ".env.production"
+      }
     },
 
     {
@@ -28,7 +31,10 @@
         "lib/main_staging.dart",
         "--dart-define",
         "FLAVOR=staging"
-      ]
+      ],
+      "env": {
+        "FLUTTER_ENV": ".env.staging"
+      }
     },
     {
       "name": "Launch Developemt",
@@ -42,7 +48,10 @@
         "lib/main_development.dart",
         "--dart-define",
         "FLAVOR=development"
-      ]
+      ],
+      "env": {
+        "FLUTTER_ENV": ".env.development"
+      }
     }
   ]
 }
