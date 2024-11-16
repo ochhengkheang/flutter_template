@@ -42,10 +42,18 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# Environment configuration
 *.env
 *.env.development
 *.env.staging
 *.env.production
+
+# Firebase configuration
+/android/app/google-services.json
+/android/app/src/production/google-services.json
+/android/app/src/staging/google-services.json
+/android/app/src/development/google-services.json
+/ios/Runner/GoogleService-Info.plist
 
 # FVM Version Cache
 .fvm/

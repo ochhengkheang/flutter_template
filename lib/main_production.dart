@@ -1,10 +1,14 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template/app.dart';
+import 'package:flutter_template/firebase_options_production.dart';
 import 'package:flutter_template/utils/consts/colors.dart';
 import 'package:flutter_template/utils/device/device_utility.dart';
 
@@ -29,16 +33,25 @@ void main() async {
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   // Todo: Initialize Firebase --- Delete if no longer needed
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // ).then((FirebaseApp value) => AuthenticationRepository());
+  await Firebase.initializeApp(
+    options: FirebaseOptionsProduction.currentPlatform,
+  ).then((FirebaseApp value) => ());
+
+  // Todo: Initialize Firebase Crashlytics
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
 
   // Todo: Ininitialize Firebase AppCheck --- Delete if no longer needed
-  // await FirebaseAppCheck.instance.activate(
-  //   appleProvider: AppleProvider.appAttestWithDeviceCheckFallback,
-  //   androidProvider: AndroidProvider.playIntegrity,
-  //   webProvider: ReCaptchaV3Provider('recaptcha-v3-site-key'),
-  // );
+  await FirebaseAppCheck.instance.activate(
+    appleProvider: AppleProvider.appAttestWithDeviceCheckFallback,
+    androidProvider: AndroidProvider.playIntegrity,
+    webProvider: ReCaptchaV3Provider('recaptcha-v3-site-key'),
+  );
 
   // Todo: Initialize dotenv
   await dotenv.load(fileName: ".env.production");

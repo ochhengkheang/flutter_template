@@ -1,13 +1,15 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class MyConfig {
-  static const String flavor =
+  final String flavor = dotenv.env['FLAVOR'] ?? _falvor;
+
+  static const String _falvor =
       String.fromEnvironment('FLAVOR', defaultValue: 'production');
 
-  final String apiUrl = dotenv.env['API_URL'] ?? apiUrl_;
+  final String apiUrl = dotenv.env['API_URL'] ?? _apiUrl;
 
-  static String get apiUrl_ {
-    switch (flavor) {
+  static String get _apiUrl {
+    switch (_falvor) {
       case 'development':
         return 'https://dev-api.example.com';
       case 'staging':
