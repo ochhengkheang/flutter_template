@@ -1493,12 +1493,15 @@ PODS:
 
 DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
+  - Firebase/Core
+  - Firebase/Firestore
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_app_check (from `.symlinks/plugins/firebase_app_check/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
+  - FirebaseCrashlytics
   - Flutter (from `Flutter`)
   - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
@@ -1634,6 +1637,6 @@ SPEC CHECKSUMS:
   Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
   url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
 
-PODFILE CHECKSUM: b109a95a7f51f46bdeba7ead98d72f650de1461c
+PODFILE CHECKSUM: 8e832ccc07d4c30693017460379ae53e0e51fa84
 
 COCOAPODS: 1.15.2

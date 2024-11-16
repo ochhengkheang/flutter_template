@@ -28,6 +28,7 @@ Steps:
     - To generate diffrent firebase for each floavor, use flutter CLI, rename firebase option, and put google-services.json according to env value in launch.json.
         - Makre sure to put google-services.json in android/app/(developement-staging-production) and make sure the package name is correct like suffix (.dev-.staging)
         - For more info, check sources below.
+    - You can check .gitignore file to see where to put the files like firebase config or env.
 
 Sources:
     - flutter_dotenv: https://pub.dev/packages/flutter_dotenv
