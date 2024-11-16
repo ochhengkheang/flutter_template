@@ -20,6 +20,17 @@ Steps:
     - configure route
     - configure firebase. Delete anything related if no need to use.
 
+    Env Flavor:
+    - .env.dev
+        FLAVOR = "development"
+        API_URL = 'https://dev-api.example.com';
+    - .env.staging
+        FLAVOR = "staging"
+        API_URL = 'https://staging-api.example.com';
+    - .env.production
+        FLAVOR = "production"
+        API_URL = 'https://api.example.com';
+
     FLvors:
     - To generate different icons for each flavor: flutter pub run flutter_launcher_icons:main -f flutter_launcher_icons*
     - To generate different splash screens for each flavor: flutter pub run flutternativesplash:main -f flutternativesplash*
@@ -29,6 +40,9 @@ Steps:
         - Makre sure to put google-services.json in android/app/(developement-staging-production) and make sure the package name is correct like suffix (.dev-.staging)
         - For more info, check sources below.
     - You can check .gitignore file to see where to put the files like firebase config or env.
+    - To generate diffrent firebase for each floavor, use flutter CLI, rename firebase option, and put google-services.json according to env value in launch.json.
+        - Makre sure to put google-services.json in android/app/(developement-staging-production) and make sure the package name is correct like suffix (.dev-.staging)
+        - For more info, check sources below.
 
 Sources:
     - flutter_dotenv: https://pub.dev/packages/flutter_dotenv

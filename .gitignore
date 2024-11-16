@@ -58,5 +58,12 @@ app.*.map.json
 /ios/config/production/GoogleService-Info.plist
 /ios/config/staging/GoogleService-Info.plist
 
+# Firebase configuration
+/android/app/google-services.json
+/android/app/src/production/google-services.json
+/android/app/src/staging/google-services.json
+/android/app/src/development/google-services.json
+/ios/Runner/GoogleService-Info.plist
+
 # FVM Version Cache
 .fvm/
