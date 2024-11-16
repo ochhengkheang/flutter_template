@@ -9,8 +9,7 @@ class MyExampleScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Text(MyConfig.flavor
-          ),
+          Text(MyConfig().flavor),
           Text(MyConfig().apiUrl),
         ],
       ),
